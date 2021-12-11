@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from core.config import API_VERSION, DEBUG, PROJECT_NAME, SECRET_KEY
+
 
 def start_app() -> FastAPI:
-    app = FastAPI(title="Apps Interview", debug=True, version="v0.1")
+    app = FastAPI(title=PROJECT_NAME, debug=DEBUG, version=API_VERSION)
     app.add_middleware(
         CORSMiddleware,
         allow_origins=['localhost', 'http://localhost'],
