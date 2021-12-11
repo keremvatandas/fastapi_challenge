@@ -6,6 +6,7 @@ from core.config import API_VERSION, DEBUG, PROJECT_NAME, SECRET_KEY
 from core.db import Base, Session, engine
 from models import app, screenshot
 from resources.init_data import read_and_prepare_data
+from routes.app import router as app_router
 
 
 def start_app() -> FastAPI:
@@ -20,6 +21,7 @@ def start_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+    include_router(app)
     return app
 
 
@@ -35,6 +37,10 @@ def create_dummy_data():
             session.bulk_save_objects(ss)
             session.commit()
         Path(path).touch()
+
+
+def include_router(app: FastAPI) -> FastAPI:
+    app.include_router(app_router)
 
 
 app = start_app()
