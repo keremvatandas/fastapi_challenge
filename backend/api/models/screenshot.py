@@ -2,14 +2,13 @@ from datetime import datetime
 
 from core.db import Base
 from sqlalchemy import Column, DateTime, Integer, String
-from sqlalchemy.orm import relationship
+from sqlalchemy.sql.schema import ForeignKey
 
 
-class App(Base):
-    __tablename__ = 'app'
+class Screenshot(Base):
+    __tablename__ = 'screenshot'
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(250))
-    icon = Column(String(250))
+    file_name = Column(String(250))
     created_at = Column(DateTime(timezone=True), default=datetime.now())
     updated_at = Column(DateTime(timezone=True), default=datetime.now())
-    screenshots = relationship("Screenshot", backref='app', lazy='dynamic')
+    app_id = Column(Integer, ForeignKey("app.id"))
