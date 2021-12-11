@@ -8,7 +8,7 @@ engine = create_engine(
     SQLALCHEMY_DATABASE_URI,
     encoding=ENCODING,
     echo=DEBUG,
-    connect_args={"check_same_thread": False}
+    connect_args={"check_same_thread": False},
 )
 Session = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()

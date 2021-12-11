@@ -6,7 +6,7 @@ from sqlalchemy.sql.schema import ForeignKey
 
 
 class Screenshot(Base):
-    __tablename__ = 'screenshot'
+    __tablename__ = "screenshot"
     id = Column(Integer, primary_key=True, index=True)
     file_name = Column(String(250))
     created_at = Column(DateTime(timezone=True), default=datetime.now())
