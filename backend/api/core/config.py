@@ -20,6 +20,6 @@ ENCODING: str = config["DATABASE"].get("ENCODING", "utf-8")
 # FASTAPI Settings
 SECRET_KEY: str = config["FASTAPI"].get("SECRET_KEY", "secret_key!")
 PROJECT_NAME: str = config["FASTAPI"].get("PROJECT_NAME", "APPS Interview Project")
-API_PREFIX: str = config["FASTAPI"].get("API_PREFIX", "APPS Interview Project")
+API_PREFIX: str = config["FASTAPI"].get("API_PREFIX", "/api")
 API_VERSION: str = config["FASTAPI"].get("API_VERSION", "v0.1")
 API_ALGORITHM: str = config["FASTAPI"].get("API_ALGORITHM", "HS256")
