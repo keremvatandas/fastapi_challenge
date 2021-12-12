@@ -9,6 +9,7 @@ __pycache__/
 # databases
 *.db
 .created
+config.ini
 
 # Distribution / packaging
 .Python
