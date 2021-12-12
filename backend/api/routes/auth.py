@@ -61,5 +61,9 @@ async def login(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
 
 
 @router.get("/refresh_token")
-async def refresh_token(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
-    pass
+async def refresh_token(
+    credentials: HTTPAuthorizationCredentials = Security(security),
+) -> JSONResponse:
+    refresh_token = credentials.credentials
+    new_token = auth.refresh_token(refresh_token)
+    return {"access_token": new_token}
