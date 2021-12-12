@@ -36,10 +36,12 @@ def create_dummy_data():
 
     path = f"{os.getcwd()}/.created"
     if not os.path.exists(path):
+        tmp_user = user.User(username="appz", password="`123456&*")
         apps, ss = read_and_prepare_data()
         with Session() as session:
             session.bulk_save_objects(apps)
             session.bulk_save_objects(ss)
+            session.add(tmp_user)
             session.commit()
         Path(path).touch()
 

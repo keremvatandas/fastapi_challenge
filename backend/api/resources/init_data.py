@@ -33,4 +33,5 @@ def read_and_prepare_data():
                 created_at=datetime.strptime(item["created_at"], "%Y-%m-%d %H:%M:%S"),
             )
         )
+
     return (appsObj, ssObj)
