@@ -1,21 +1,16 @@
 from typing import Any, Generator
 
 import pytest
-
+from core.auth import Auth
 from core.config import TEST_SQLALCHEMY_DATABASE_URI
 from core.db import Base, get_db
-from core.auth import Auth
-
 from fastapi import FastAPI
 from fastapi.testclient import TestClient
-
 from models import app, screenshot, user
 from resources.init_data import read_and_prepare_data
-
 from routes.app import router as app_router
 from routes.auth import router as auth_router
 from routes.webp import router as webp_router
-
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 

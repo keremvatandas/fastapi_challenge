@@ -1,6 +1,7 @@
+import json
+
 from core.config import API_PREFIX
 from fastapi import status
-import json
 
 
 def test_signup(client) -> None:

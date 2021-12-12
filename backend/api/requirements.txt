@@ -3,6 +3,7 @@ uvicorn==0.16.0
 
 # DB/ORM Services
 SQLAlchemy==1.4.28
+itsdangerous==2.0.1
 
 # Auth
 PyJWT==2.3.0
