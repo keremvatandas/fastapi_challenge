@@ -4,9 +4,10 @@ from starlette.middleware.sessions import SessionMiddleware
 
 from core.config import API_VERSION, DEBUG, PROJECT_NAME, SECRET_KEY
 from core.db import Base, Session, engine
-from models import app, screenshot
+from models import app, screenshot, user
 from resources.init_data import read_and_prepare_data
 from routes.app import router as app_router
+from routes.auth import router as auth_router
 
 
 def start_app() -> FastAPI:
@@ -41,6 +42,7 @@ def create_dummy_data():
 
 def include_router(app: FastAPI) -> FastAPI:
     app.include_router(app_router)
+    app.include_router(auth_router)
 
 
 app = start_app()

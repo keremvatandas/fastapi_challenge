@@ -1,3 +1,10 @@
 fastapi==0.70.0
 uvicorn==0.16.0
+
+# DB/ORM Services
 SQLAlchemy==1.4.28
+
+# Auth
+PyJWT==2.3.0
+passlib==1.7.4
+bcrypt==3.2.0
