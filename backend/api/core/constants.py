@@ -12,3 +12,10 @@ MISSING_PARAMS_MSG: str = "Missing parameter."
 INVALID_KEYWORD_MSG: str = "Missing parameter or invalid keyword argument."
 INVALID_USERNAME_MSG: str = "Invalid username"
 INVALID_PASSWORD_MSG: str = "Invalid password"
+
+
+# Router Paths
+LOGIN_URL = "/login"
+SIGNUP_URL = "/signup"
+REFRESH_TOKEN_URL = "/refresh_token"
+STATIC_FILES_PATH = "/static"

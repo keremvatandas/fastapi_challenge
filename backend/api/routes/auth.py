@@ -1,24 +1,21 @@
-from fastapi import HTTPException, Security
-from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from sqlalchemy.exc import SQLAlchemyError
 from core.auth import Auth
-from models.user import User
-from fastapi import APIRouter, Depends, status
-
-from fastapi.responses import JSONResponse
-from starlette.requests import Request
-from core.constants import SUCCESS_CREATED_MSG
-from routes.exceptions import (
-    MISSING_PARAMS,
-    INVALID_KEYWORD,
-    INVALID_USERNAME,
-    INVALID_PASSWORD,
-)
 from core.config import API_PREFIX
+from core.constants import LOGIN_URL, REFRESH_TOKEN_URL, SIGNUP_URL, SUCCESS_CREATED_MSG
 from core.db import Session, get_db
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Security, status
 from fastapi.encoders import jsonable_encoder
+from fastapi.responses import JSONResponse
+from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
+from models.user import User
+from sqlalchemy.exc import SQLAlchemyError
+from starlette.requests import Request
 
+from routes.exceptions import (
+    INVALID_KEYWORD,
+    INVALID_PASSWORD,
+    INVALID_USERNAME,
+    MISSING_PARAMS,
+)
 
 router = APIRouter(prefix=API_PREFIX)
 
@@ -27,7 +24,7 @@ security = HTTPBearer()
 auth = Auth()
 
 
-@router.post("/signup")
+@router.post(SIGNUP_URL)
 async def signup(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
     req_body = await data.json()
     try:
@@ -44,7 +41,7 @@ async def signup(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
     )
 
 
-@router.post("/login")
+@router.post(LOGIN_URL)
 async def login(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
     req_body = await data.json()
     user = db.query(User).filter(User.username == req_body.get("username")).first()
@@ -60,7 +57,7 @@ async def login(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
     return {"access_token": access_token, "refresh_token": refresh_token}
 
 
-@router.get("/refresh_token")
+@router.get(REFRESH_TOKEN_URL)
 async def refresh_token(
     credentials: HTTPAuthorizationCredentials = Security(security),
 ) -> JSONResponse:

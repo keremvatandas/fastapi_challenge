@@ -1,8 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
 
 from core.config import API_VERSION, DEBUG, PROJECT_NAME, SECRET_KEY
+from core.constants import STATIC_FILES_PATH
 from core.db import Base, Session, engine
 from models import app, screenshot, user
 from resources.init_data import read_and_prepare_data
@@ -14,6 +16,7 @@ def start_app() -> FastAPI:
     Base.metadata.create_all(engine)
     create_dummy_data()
     app = FastAPI(title=PROJECT_NAME, debug=DEBUG, version=API_VERSION)
+    app.mount(STATIC_FILES_PATH, StaticFiles(directory="static"), name="static")
     app.add_middleware(SessionMiddleware, secret_key=SECRET_KEY)
     app.add_middleware(
         CORSMiddleware,
@@ -22,6 +25,7 @@ def start_app() -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
+
     include_router(app)
     return app
 
