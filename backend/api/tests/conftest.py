@@ -41,7 +41,12 @@ SessionTesting = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def create_test_user():
     with SessionTesting() as sess:
-        sess.add(user.User(username="test", password="test"))
+        sess.add(
+            user.User(
+                username="test",
+                password="$2b$12$Zj4fqnVqwh1S4VTqOc2ePe816S7cVYTyjGSEODidheojXo44q8cN2",
+            )
+        )
         sess.commit()
 
 
@@ -103,3 +108,8 @@ def client(
 @pytest.fixture(scope="function")
 def access_token() -> str:
     return auth.encode_token("test")
+
+
+@pytest.fixture(scope="function")
+def refresh_token() -> str:
+    return auth.encode_refresh_token("test")

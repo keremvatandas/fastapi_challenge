@@ -2,14 +2,10 @@ import os
 import shutil
 from core.auth import Auth
 from core.config import API_PREFIX
-from core.db import Session, get_db
-from fastapi import APIRouter, Depends, Security, File, UploadFile
-from fastapi.encoders import jsonable_encoder
+from fastapi import APIRouter, Security, File, UploadFile
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
-from starlette import status
 
-from routes.exceptions import INVALID_TOKEN
 from PIL import Image
 from pathlib import Path
 

@@ -1,5 +1,3 @@
-import json
-
 from core.config import API_PREFIX
 from fastapi import status
 
