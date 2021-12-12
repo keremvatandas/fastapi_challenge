@@ -1,5 +1,6 @@
 from core.auth import Auth
 from core.config import API_PREFIX
+from core.constants import STATIC_FILES_PATH
 from core.db import Session, get_db
 from fastapi import APIRouter, Depends, Security
 from fastapi.encoders import jsonable_encoder
@@ -39,6 +40,6 @@ async def get_screenshots(
     token = credentials.credentials
     if auth.decode_token(token):
         result = db.query(Screenshot).filter(Screenshot.app_id == app_id).all()
-        all_ss = [row.file_name for row in result]
+        all_ss = [f"{STATIC_FILES_PATH}/images/ss/{row.file_name}" for row in result]
         return JSONResponse(status_code=status.HTTP_200_OK, content=all_ss)
     raise INVALID_TOKEN
