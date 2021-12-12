@@ -6,6 +6,8 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.responses import JSONResponse
 from fastapi.security import HTTPAuthorizationCredentials, HTTPBearer
 from models.app import App
+from models.screenshot import Screenshot
+from starlette import status
 
 from routes.exceptions import INVALID_TOKEN
 
@@ -25,4 +27,18 @@ async def get_apps(
         result = db.query(App).all()
         apps = jsonable_encoder(result)
         return JSONResponse(apps)
+    raise INVALID_TOKEN
+
+
+@router.get("/get_screenshots/{app_id}")
+async def get_screenshots(
+    app_id: int,
+    db: Session = Depends(get_db),
+    credentials: HTTPAuthorizationCredentials = Security(security),
+) -> JSONResponse:
+    token = credentials.credentials
+    if auth.decode_token(token):
+        result = db.query(Screenshot).filter(Screenshot.app_id == app_id).all()
+        all_ss = [row.file_name for row in result]
+        return JSONResponse(status_code=status.HTTP_200_OK, content=all_ss)
     raise INVALID_TOKEN
