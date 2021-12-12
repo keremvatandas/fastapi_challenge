@@ -8,7 +8,12 @@ from fastapi import APIRouter, Depends, status
 from fastapi.responses import JSONResponse
 from starlette.requests import Request
 from core.constants import SUCCESS_CREATED_MSG
-from routes.exceptions import MISSING_PARAMS, INVALID_KEYWORD
+from routes.exceptions import (
+    MISSING_PARAMS,
+    INVALID_KEYWORD,
+    INVALID_USERNAME,
+    INVALID_PASSWORD,
+)
 from core.config import API_PREFIX
 from core.db import Session, get_db
 from fastapi import APIRouter, Depends
@@ -41,7 +46,18 @@ async def signup(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
 
 @router.post("/login")
 async def login(data: Request, db: Session = Depends(get_db)) -> JSONResponse:
-    pass
+    req_body = await data.json()
+    user = db.query(User).filter(User.username == req_body.get("username")).first()
+
+    if user is None:
+        raise INVALID_USERNAME
+
+    if not auth.verify_password(req_body.get("password"), user.password):
+        raise INVALID_PASSWORD
+
+    access_token = auth.encode_token(user.username)
+    refresh_token = auth.encode_refresh_token(user.username)
+    return {"access_token": access_token, "refresh_token": refresh_token}
 
 
 @router.get("/refresh_token")

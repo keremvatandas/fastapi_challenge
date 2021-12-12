@@ -7,8 +7,19 @@ from core.constants import (
     INVALID_KEYWORD_MSG,
     MISSING_PARAMS_MSG,
     NOT_FOUND_MSG,
+    INVALID_USERNAME_MSG,
+    INVALID_PASSWORD_MSG,
 )
 from fastapi import HTTPException, status
+
+INVALID_USERNAME = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED, detail=INVALID_USERNAME_MSG
+)
+
+INVALID_PASSWORD = HTTPException(
+    status_code=status.HTTP_401_UNAUTHORIZED, detail=INVALID_PASSWORD_MSG
+)
+
 
 INVALID_SCOPE_TOKEN = HTTPException(
     status_code=status.HTTP_401_UNAUTHORIZED, detail=INVALID_SCOPE_TOKEN_MSG

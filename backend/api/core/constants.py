@@ -10,3 +10,5 @@ SUCCESS_DELETED_MSG: dict = {"result": True, "message": "Deleted successfully."}
 NOT_FOUND_MSG: str = "Resource not found."
 MISSING_PARAMS_MSG: str = "Missing parameter."
 INVALID_KEYWORD_MSG: str = "Missing parameter or invalid keyword argument."
+INVALID_USERNAME_MSG: str = "Invalid username"
+INVALID_PASSWORD_MSG: str = "Invalid password"
