@@ -14,3 +14,7 @@ python-multipart==0.0.5
 
 # File Converter
 Pillow==8.4.0
+
+# Python Tests
+pytest==6.2.5
+requests==2.26.0
