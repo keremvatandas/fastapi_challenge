@@ -25,7 +25,20 @@ const Homepage = () => {
             })}
           </Menu>
         </Header>
-        <Content>Content</Content>
+        <Layout>
+          <Layout style={{ padding: "0 24px 24px" }}>
+            <Content
+              className="site-layout-background"
+              style={{
+                padding: 24,
+                margin: 0,
+                minHeight: 280,
+              }}
+            >
+              {currentCategory?.component}
+            </Content>
+          </Layout>
+        </Layout>
         <FooterPage />
       </Layout>
     </div>
