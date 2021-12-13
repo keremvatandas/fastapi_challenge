@@ -5,7 +5,6 @@ function App() {
   return (
     <div className="App">
       <Homepage />
-      <h1> KEREM</h1>
     </div>
   );
 }

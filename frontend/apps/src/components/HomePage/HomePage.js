@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { categories } from "../commons/Categories";
+import FooterPage from "../Footer/FooterPage";
 
 const { Header, Content } = Layout;
 
@@ -8,7 +9,7 @@ const Homepage = () => {
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
   return (
     <div>
-      <Layout>
+      <Layout style={{ minHeight: "100vh" }}>
         <Header>
           <Menu
             mode="horizontal"
@@ -25,7 +26,7 @@ const Homepage = () => {
           </Menu>
         </Header>
         <Content>Content</Content>
-        {/* <Footer>Footer</Footer> */}
+        <FooterPage />
       </Layout>
     </div>
   );
