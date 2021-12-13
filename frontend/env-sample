@@ -1,2 +1,2 @@
-REACT_APP_FOOTER_MSG = "Apps Footer 2021"
-REACT_APP_API_URL = "http://localhost:8000/api"
+REACT_APP_FOOTER_MSG = 
+REACT_APP_API_URL = 
