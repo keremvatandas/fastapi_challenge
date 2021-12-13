@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { Layout, Menu } from "antd";
 import { categories } from "../commons/Categories";
 import FooterPage from "../Footer/FooterPage";
-
+import { useSelector } from "react-redux";
 const { Header, Content } = Layout;
 
 const Homepage = () => {
   const [currentCategory, setCurrentCategory] = useState(categories[0]);
+  const isSignedIn = useSelector((state) => state.auth.isSignedIn);
   return (
     <div>
       <Layout style={{ minHeight: "100vh" }}>
