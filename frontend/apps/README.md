@@ -29,12 +29,12 @@ yarn start
 ### Some Frontend Screens
 
 - Login Page
- ![Login Page](https://raw.githubusercontent.com/keremvatandas/apps_challenge/main/docs/images/loginpage.png?token=ABOAWTKPNJZGXUUQCKYPBEDBW7MMQ)
+ ![Login Page](https://github.com/keremvatandas/apps_challenge/blob/main/docs/images/loginpage.png?raw=true)
 
 
  - Image Converter Page
- ![Image Converter Page](https://raw.githubusercontent.com/keremvatandas/apps_challenge/main/docs/images/converterpage.png?token=ABOAWTIR2AROFBHL5HF2CN3BW7MME)
+ ![Image Converter Page](https://github.com/keremvatandas/apps_challenge/blob/main/docs/images/converterpage.png?raw=true)
 
 
  - Apps Home Page
- ![Apps Home Page](https://raw.githubusercontent.com/keremvatandas/apps_challenge/main/docs/images/apps.png?token=ABOAWTIJWEVGKSE2YUCDEUDBW7MLW)
+ ![Apps Home Page](https://github.com/keremvatandas/apps_challenge/blob/main/docs/images/apps.png?raw=true)
