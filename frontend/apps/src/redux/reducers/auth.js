@@ -13,7 +13,6 @@ const authReducer = (state = AUTH_INITIAL_STATE, action) => {
         access_token: action.payload,
       };
     case SET_LOGIN_SUCCESS:
-      console.log("SET_LOGIN_SUCCESS -> ", action.payload);
       return {
         ...state,
         isSignedIn: action.payload,

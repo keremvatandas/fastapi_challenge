@@ -82,13 +82,7 @@ const Loginpage = () => {
                 span: 16,
               }}
             >
-              <Button
-                type="primary"
-                htmlType="submit"
-                onClick={(e) => {
-                  console.log(e.target.values);
-                }}
-              >
+              <Button type="primary" htmlType="submit">
                 Login
               </Button>
             </Form.Item>
