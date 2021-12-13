@@ -135,3 +135,14 @@ dmypy.json
 
 # for MACOS
 .DS_Store
+
+# React and others
+.idea/
+.vscode/
+node_modules/
+build
+*.tgz
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm/
